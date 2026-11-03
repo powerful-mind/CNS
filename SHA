@@ -1,0 +1,37 @@
+import hashlib
+
+def sha1_hash(text):
+    return hashlib.sha1(text.encode()).hexdigest()
+
+while True:
+    print("\n--- SHA-1 MENU ---")
+    print("1. Generate SHA-1 Digest")
+    print("2. Modify Text and Compare Digests")
+    print("3. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == '1':
+        text = input("Enter a text: ")
+        print("SHA-1 Digest:", sha1_hash(text))
+
+    elif choice == '2':
+        text = input("Enter a text: ")
+        digest1 = sha1_hash(text)
+
+        changed_text = text + "!"
+        digest2 = sha1_hash(changed_text)
+
+        print("Original Digest:", digest1)
+        print("Modified Text:", changed_text)
+        print("Modified Digest:", digest2)
+
+        print("Digests match" if digest1 == digest2
+              else "Digests differ - input has changed")
+
+    elif choice == '3':
+        print("Exiting program...")
+        break
+
+    else:
+        print("Invalid choice! Try again.")
